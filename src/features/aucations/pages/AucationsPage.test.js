@@ -8,6 +8,13 @@ vi.mock('../states/aucationsStore', () => ({
   useAucationsStore: vi.fn()
 }))
 
+const defaultStubs = {
+  AddModal: {
+    template: '<div data-testid="mock-add-modal"><button @click="$emit(\'close\')" class="mock-close">Close</button><button @click="$emit(\'success\')" class="mock-success">Success</button></div>',
+    emits: ['close', 'success']
+  }
+}
+
 describe('AucationsPage.vue', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
@@ -25,7 +32,9 @@ describe('AucationsPage.vue', () => {
       removeAucation: vi.fn()
     })
 
-    const wrapper = mount(AucationsPage)
+    const wrapper = mount(AucationsPage, {
+      global: { stubs: defaultStubs }
+    })
     expect(wrapper.text()).toContain('Memuat data lelang...')
     expect(wrapper.text()).toContain('Error message')
     expect(wrapper.text()).toContain('Success message')
@@ -63,7 +72,9 @@ describe('AucationsPage.vue', () => {
       removeAucation: removeAucationMock
     })
 
-    const wrapper = mount(AucationsPage)
+    const wrapper = mount(AucationsPage, {
+      global: { stubs: defaultStubs }
+    })
 
     expect(wrapper.text()).toContain('Laptop Gaming')
     expect(wrapper.text()).toContain('Mouse Wireless')
@@ -79,7 +90,7 @@ describe('AucationsPage.vue', () => {
 
     // Cancel delete
     vi.mocked(confirm).mockReturnValueOnce(false)
-    const deleteButtons = wrapper.findAll('button')
+    const deleteButtons = wrapper.findAll('.btn-delete')
     await deleteButtons[0].trigger('click')
     expect(removeAucationMock).not.toHaveBeenCalled()
 
@@ -87,6 +98,39 @@ describe('AucationsPage.vue', () => {
     vi.mocked(confirm).mockReturnValueOnce(true)
     await deleteButtons[0].trigger('click')
     expect(removeAucationMock).toHaveBeenCalledWith(1)
+  })
+
+  it('handles opening, closing, and submitting AddModal', async () => {
+    const fetchAucationsMock = vi.fn()
+
+    vi.mocked(useAucationsStore).mockReturnValue({
+      aucations: [],
+      loading: false,
+      errorMessage: '',
+      successMessage: '',
+      fetchAucations: fetchAucationsMock,
+      removeAucation: vi.fn()
+    })
+
+    const wrapper = mount(AucationsPage, {
+      global: { stubs: defaultStubs }
+    })
+
+    // Initially modal is closed
+    expect(wrapper.find('[data-testid="mock-add-modal"]').exists()).toBe(false)
+
+    // Open modal
+    await wrapper.find('[data-testid="btn-add-aucation"]').trigger('click')
+    expect(wrapper.find('[data-testid="mock-add-modal"]').exists()).toBe(true)
+
+    // Close modal via close event
+    await wrapper.find('.mock-close').trigger('click')
+    expect(wrapper.find('[data-testid="mock-add-modal"]').exists()).toBe(false)
+
+    // Open again and trigger success event
+    await wrapper.find('[data-testid="btn-add-aucation"]').trigger('click')
+    await wrapper.find('.mock-success').trigger('click')
+    expect(fetchAucationsMock).toHaveBeenCalled()
   })
 
   it('renders empty state when auctions list is empty and not loading', () => {
@@ -99,7 +143,10 @@ describe('AucationsPage.vue', () => {
       removeAucation: vi.fn()
     })
 
-    const wrapper = mount(AucationsPage)
+    const wrapper = mount(AucationsPage, {
+      global: { stubs: defaultStubs }
+    })
     expect(wrapper.text()).toContain('Belum ada data lelang yang tersedia.')
   })
 })
+

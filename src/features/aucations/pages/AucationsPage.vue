@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useAucationsStore } from '../states/aucationsStore'
+import AddModal from '../modals/AddModal.vue'
 
 const store = useAucationsStore()
 
+const isAddModalOpen = ref(false)
 const filterIsMe = ref(undefined)
 const filterIsClosed = ref(undefined)
 
@@ -12,6 +14,10 @@ const loadData = () => {
     is_me: filterIsMe.value,
     is_closed: filterIsClosed.value
   })
+}
+
+const handleSuccessAdd = () => {
+  loadData()
 }
 
 const handleDelete = async (id) => {
@@ -30,6 +36,13 @@ onMounted(() => {
   <div class="max-w-6xl mx-auto p-6">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-2xl font-bold text-gray-800">Daftar Pelelangan Barang</h1>
+      <button 
+        @click="isAddModalOpen = true"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm transition flex items-center gap-2"
+        data-testid="btn-add-aucation"
+      >
+        <span>+ Tambah Lelang</span>
+      </button>
     </div>
 
     <!-- Alert Messages -->
@@ -84,7 +97,7 @@ onMounted(() => {
         </div>
         <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
           <span class="text-xs text-gray-500">Oleh: {{ item.author?.name || 'Anonim' }}</span>
-          <button @click="handleDelete(item.id)" class="text-red-600 hover:text-red-800 text-xs font-medium px-3 py-1.5 border border-red-200 rounded-lg hover:bg-red-50 transition">
+          <button @click="handleDelete(item.id)" class="btn-delete text-red-600 hover:text-red-800 text-xs font-medium px-3 py-1.5 border border-red-200 rounded-lg hover:bg-red-50 transition">
             Hapus
           </button>
         </div>
@@ -95,5 +108,12 @@ onMounted(() => {
     <div v-else class="text-center py-12 bg-white rounded-xl border border-gray-100">
       <p class="text-gray-500 text-sm">Belum ada data lelang yang tersedia.</p>
     </div>
+
+    <!-- Modal Tambah Lelang -->
+    <AddModal
+      v-if="isAddModalOpen"
+      @close="isAddModalOpen = false"
+      @success="handleSuccessAdd"
+    />
   </div>
 </template>
