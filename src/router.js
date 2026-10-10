@@ -13,10 +13,6 @@ import { getAccessToken } from './helpers/apiHelper'
 
 const routes = [
   {
-    path: '/',
-    redirect: '/aucations'
-  },
-  {
     path: '/auth',
     component: AuthLayout,
     children: [
@@ -37,6 +33,11 @@ const routes = [
     component: AucationLayout,
     meta: { requiresAuth: true },
     children: [
+      {
+        path: '',
+        name: 'Home',
+        component: AucationsPage
+      },
       {
         path: 'aucations',
         name: 'AucationsList',
