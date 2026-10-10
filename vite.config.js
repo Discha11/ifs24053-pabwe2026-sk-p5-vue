@@ -3,6 +3,23 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
+const inlineCss = () => ({
+  name: 'inline-css',
+  apply: 'build',
+  enforce: 'post',
+  transformIndexHtml(html, { bundle }) {
+    if (!bundle) return html
+    for (const [key, chunk] of Object.entries(bundle)) {
+      if (key.endsWith('.css') && key.includes('index')) {
+        const linkRegex = new RegExp(`<link[^>]*href="[/]?${key}"[^>]*>`, 'i')
+        html = html.replace(linkRegex, `<style>${chunk.source}</style>`)
+        delete bundle[key]
+      }
+    }
+    return html
+  }
+})
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const port = parseInt(env.APP_PORT) || 3000
@@ -11,6 +28,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       tailwindcss(),
+      inlineCss(),
     ],
     define: {
       DELCOM_BASEURL: JSON.stringify(env.VITE_DELCOM_BASEURL || 'https://open-api.delcom.org/api/v1')
