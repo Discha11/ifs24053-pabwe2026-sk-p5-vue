@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
       port: port
     },
     build: {
-      sourcemap: true,
+      sourcemap: false,
       target: 'esnext',
       rollupOptions: {
         output: {
