@@ -51,7 +51,7 @@ describe('NavbarComponent.vue', () => {
     vi.mocked(toolsHelper.showConfirmDialog).mockResolvedValue(true)
 
     const wrapper = mount(NavbarComponent)
-    const logoutBtn = wrapper.find('button.text-red-600')
+    const logoutBtn = wrapper.find('button.text-red-700')
     await logoutBtn.trigger('click')
 
     expect(toolsHelper.showConfirmDialog).toHaveBeenCalled()
@@ -65,7 +65,7 @@ describe('NavbarComponent.vue', () => {
     vi.mocked(toolsHelper.showConfirmDialog).mockResolvedValue(false)
 
     const wrapper = mount(NavbarComponent)
-    const logoutBtn = wrapper.find('button.text-red-600')
+    const logoutBtn = wrapper.find('button.text-red-700')
     await logoutBtn.trigger('click')
 
     expect(authStore.logout).not.toHaveBeenCalled()

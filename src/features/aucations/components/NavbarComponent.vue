@@ -64,7 +64,7 @@ const handleLogout = async () => {
 
       <button
         @click="handleLogout"
-        class="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition duration-200"
+        class="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition duration-200"
       >
         Keluar
       </button>

@@ -14,7 +14,7 @@
       <router-view />
     </div>
 
-    <footer class="mt-6 text-center text-xs text-gray-400">
+    <footer class="mt-6 text-center text-xs text-gray-600">
       &copy; 2026 Coding AI Council - Informatics Coursework
     </footer>
   </div>
