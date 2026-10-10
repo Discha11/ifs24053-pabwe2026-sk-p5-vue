@@ -89,7 +89,10 @@ const handleChangePassword = async () => {
         </div>
 
         <div class="space-y-2">
+          <label for="profile-photo-input" class="sr-only">Foto Profil</label>
           <input
+            id="profile-photo-input"
+            aria-label="Foto Profil"
             type="file"
             accept="image/*"
             @change="handleFileChange"
@@ -112,8 +115,10 @@ const handleChangePassword = async () => {
       <h2 class="text-lg font-bold text-slate-800">Informasi Pribadi</h2>
       <form @submit.prevent="handleUpdateProfile" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Nama Lengkap</label>
+          <label for="profile-name-input" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Nama Lengkap</label>
           <input
+            id="profile-name-input"
+            aria-label="Nama Lengkap"
             v-model="name"
             type="text"
             required
@@ -121,8 +126,10 @@ const handleChangePassword = async () => {
           />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Email</label>
+          <label for="profile-email-input" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Email</label>
           <input
+            id="profile-email-input"
+            aria-label="Email"
             :value="usersStore.profile?.email"
             disabled
             type="email"
@@ -144,8 +151,10 @@ const handleChangePassword = async () => {
       <h2 class="text-lg font-bold text-slate-800">Keamanan & Kata Sandi</h2>
       <form @submit.prevent="handleChangePassword" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Kata Sandi Lama</label>
+          <label for="profile-old-password-input" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Kata Sandi Lama</label>
           <input
+            id="profile-old-password-input"
+            aria-label="Kata Sandi Lama"
             v-model="oldPassword"
             type="password"
             required
@@ -153,8 +162,10 @@ const handleChangePassword = async () => {
           />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Kata Sandi Baru</label>
+          <label for="profile-new-password-input" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Kata Sandi Baru</label>
           <input
+            id="profile-new-password-input"
+            aria-label="Kata Sandi Baru"
             v-model="newPassword"
             type="password"
             required

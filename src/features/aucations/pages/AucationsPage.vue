@@ -56,15 +56,15 @@ onMounted(() => {
     <!-- Filter Section -->
     <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-6 flex gap-4 items-center">
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Kepemilikan</label>
-        <select v-model="filterIsMe" @change="loadData" class="border rounded-lg px-3 py-1.5 text-sm">
+        <label for="filter-ownership" class="block text-xs font-semibold text-gray-600 mb-1">Kepemilikan</label>
+        <select id="filter-ownership" aria-label="Kepemilikan" v-model="filterIsMe" @change="loadData" class="border rounded-lg px-3 py-1.5 text-sm">
           <option :value="undefined">Semua Lelang</option>
           <option :value="1">Lelang Saya</option>
         </select>
       </div>
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Status</label>
-        <select v-model="filterIsClosed" @change="loadData" class="border rounded-lg px-3 py-1.5 text-sm">
+        <label for="filter-status" class="block text-xs font-semibold text-gray-600 mb-1">Status</label>
+        <select id="filter-status" aria-label="Status" v-model="filterIsClosed" @change="loadData" class="border rounded-lg px-3 py-1.5 text-sm">
           <option :value="undefined">Semua Status</option>
           <option :value="1">Dibuka</option>
           <option :value="0">Ditutup</option>

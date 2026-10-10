@@ -76,7 +76,10 @@ onMounted(() => {
         
         <!-- Form Add Bid -->
         <div class="flex gap-2 mb-6">
+          <label for="bid-amount-input" class="sr-only">Nominal Tawaran</label>
           <input 
+            id="bid-amount-input"
+            aria-label="Nominal tawaran"
             v-model.number="bidAmount" 
             type="number" 
             placeholder="Masukkan nominal tawaran" 
