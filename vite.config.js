@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => {
       port: port
     },
     build: {
+      modulePreload: false,
       sourcemap: false,
       target: 'esnext',
       rollupOptions: {
