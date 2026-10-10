@@ -41,8 +41,9 @@ const handleRegister = async () => {
 
     <form @submit.prevent="handleRegister" class="space-y-3">
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Nama Lengkap</label>
+        <label for="register-name-input" class="block text-xs font-semibold text-gray-600 mb-1">Nama Lengkap</label>
         <input 
+          id="register-name-input"
           v-model="name" 
           type="text" 
           placeholder="Nama Anda" 
@@ -52,8 +53,9 @@ const handleRegister = async () => {
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+        <label for="register-email-input" class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
         <input 
+          id="register-email-input"
           v-model="email" 
           type="email" 
           placeholder="nama@delcom.org" 
@@ -63,8 +65,9 @@ const handleRegister = async () => {
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
+        <label for="register-password-input" class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
         <input 
+          id="register-password-input"
           v-model="password" 
           type="password" 
           placeholder="••••••••" 
@@ -74,6 +77,7 @@ const handleRegister = async () => {
       </div>
 
       <button 
+        id="register-submit-button"
         type="submit" 
         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg text-sm transition mt-2"
         :disabled="store.loading">

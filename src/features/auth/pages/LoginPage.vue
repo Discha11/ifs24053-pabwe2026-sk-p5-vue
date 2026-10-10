@@ -36,8 +36,9 @@ const handleLogin = async () => {
 
     <form @submit.prevent="handleLogin" class="space-y-3">
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+        <label for="login-email-input" class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
         <input 
+          id="login-email-input"
           v-model="email" 
           type="email" 
           placeholder="nama@delcom.org" 
@@ -47,8 +48,9 @@ const handleLogin = async () => {
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
+        <label for="login-password-input" class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
         <input 
+          id="login-password-input"
           v-model="password" 
           type="password" 
           placeholder="••••••••" 
@@ -58,6 +60,7 @@ const handleLogin = async () => {
       </div>
 
       <button 
+        id="login-submit-button"
         type="submit" 
         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg text-sm transition mt-2"
         :disabled="store.loading">
