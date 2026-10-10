@@ -34,6 +34,11 @@ onMounted(() => {
 
 <template>
   <div class="max-w-4xl mx-auto p-6">
+    <!-- Fallback Heading saat data belum dimuat -->
+    <div v-if="!store.currentAucation" class="mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">Detail Pelelangan</h1>
+    </div>
+
     <!-- Loading -->
     <div v-if="store.loading && !store.currentAucation" class="text-center py-10 text-gray-500">
       Memuat detail lelang...

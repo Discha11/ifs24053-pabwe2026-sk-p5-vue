@@ -26,6 +26,17 @@ export default defineConfig(({ mode }) => {
     preview: {
       port: port
     },
+    build: {
+      sourcemap: true,
+      target: 'esnext',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'toast-ui': ['@toast-ui/editor']
+          }
+        }
+      }
+    },
     test: {
       globals: true,
       environment: 'jsdom',
