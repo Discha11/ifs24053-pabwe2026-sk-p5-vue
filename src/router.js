@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { getAccessToken } from './helpers/apiHelper'
 
-const AuthLayout = () => import('./features/auth/layouts/AuthLayout.vue')
-const LoginPage = () => import('./features/auth/pages/LoginPage.vue')
+import AuthLayout from './features/auth/layouts/AuthLayout.vue'
+import LoginPage from './features/auth/pages/LoginPage.vue'
 const RegisterPage = () => import('./features/auth/pages/RegisterPage.vue')
 
 const AucationLayout = () => import('./features/aucations/layouts/AucationLayout.vue')
