@@ -3,14 +3,14 @@ import { getAccessToken } from './helpers/apiHelper'
 
 import AuthLayout from './features/auth/layouts/AuthLayout.vue'
 import LoginPage from './features/auth/pages/LoginPage.vue'
-const RegisterPage = () => import('./features/auth/pages/RegisterPage.vue')
+import RegisterPage from './features/auth/pages/RegisterPage.vue'
 
-const AucationLayout = () => import('./features/aucations/layouts/AucationLayout.vue')
-const AucationsPage = () => import('./features/aucations/pages/AucationsPage.vue')
-const DetailAucationPage = () => import('./features/aucations/pages/DetailAucationPage.vue')
-const UsersPage = () => import('./features/users/pages/UsersPage.vue')
-const ProfilePage = () => import('./features/users/pages/ProfilePage.vue')
-const NotFoundPage = () => import('./features/common/pages/NotFoundPage.vue')
+import AucationLayout from './features/aucations/layouts/AucationLayout.vue'
+import AucationsPage from './features/aucations/pages/AucationsPage.vue'
+import DetailAucationPage from './features/aucations/pages/DetailAucationPage.vue'
+import UsersPage from './features/users/pages/UsersPage.vue'
+import ProfilePage from './features/users/pages/ProfilePage.vue'
+import NotFoundPage from './features/common/pages/NotFoundPage.vue'
 
 const routes = [
   {

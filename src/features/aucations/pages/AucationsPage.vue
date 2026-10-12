@@ -1,8 +1,7 @@
 <script setup>
-import { ref, onMounted, defineAsyncComponent } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAucationsStore } from '../states/aucationsStore'
-
-const AddModal = defineAsyncComponent(() => import('../modals/AddModal.vue'))
+import AddModal from '../modals/AddModal.vue'
 
 const store = useAucationsStore()
 
