@@ -62,8 +62,9 @@ const handleSubmit = async () => {
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Judul Barang</label>
+          <label for="edit-title" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Judul Barang</label>
           <input 
+            id="edit-title"
             v-model="title" 
             type="text" 
             class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -72,13 +73,14 @@ const handleSubmit = async () => {
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Deskripsi (Markdown)</label>
+          <span class="block text-xs font-semibold text-slate-600 uppercase mb-1">Deskripsi (Markdown)</span>
           <MarkdownEditor v-model="description" height="200px" />
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Harga Awal (Start Bid)</label>
+          <label for="edit-start-bid" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Harga Awal (Start Bid)</label>
           <input 
+            id="edit-start-bid"
             v-model.number="startBid" 
             type="number" 
             class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -87,8 +89,9 @@ const handleSubmit = async () => {
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Batas Waktu Penutupan</label>
+          <label for="edit-closed-at" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Batas Waktu Penutupan</label>
           <input 
+            id="edit-closed-at"
             v-model="closedAt" 
             type="text" 
             class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"

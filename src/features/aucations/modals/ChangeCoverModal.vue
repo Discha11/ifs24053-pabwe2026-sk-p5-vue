@@ -73,8 +73,9 @@ const handleSubmit = async () => {
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Pilih Berkas Gambar (Cover)</label>
+          <label for="cover-file-input" class="block text-xs font-semibold text-slate-600 uppercase mb-2">Pilih Berkas Gambar (Cover)</label>
           <input 
+            id="cover-file-input"
             ref="fileInput"
             type="file" 
             accept="image/*"

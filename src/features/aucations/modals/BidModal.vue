@@ -61,8 +61,9 @@ const handleSubmit = async () => {
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-gray-600 mb-1">Nominal Bid (Rp)</label>
+          <label for="bid-amount" class="block text-xs font-semibold text-gray-600 mb-1">Nominal Bid (Rp)</label>
           <input 
+            id="bid-amount"
             v-model.number="bidAmount" 
             type="number" 
             placeholder="Contoh: 150000"

@@ -43,7 +43,7 @@ export const showConfirmDialog = async (message, title = 'Apakah Anda yakin?') =
 
 export const formatRupiah = (amount) => {
   const num = Number(amount)
-  if (isNaN(num)) return 'Rp 0'
+  if (Number.isNaN(num)) return 'Rp 0'
   return `Rp ${num.toLocaleString('id-ID')}`
 }
 
@@ -51,7 +51,7 @@ export const formatDate = (dateString) => {
   if (!dateString) return '-'
   try {
     const date = new Date(dateString)
-    if (isNaN(date.getTime())) return dateString
+    if (Number.isNaN(date.getTime())) return dateString
     return new Intl.DateTimeFormat('id-ID', {
       dateStyle: 'medium',
       timeStyle: 'short'

@@ -46,8 +46,9 @@ const handleSubmit = async () => {
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Judul Barang</label>
+          <label for="add-title" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Judul Barang</label>
           <input 
+            id="add-title"
             v-model="title" 
             type="text" 
             placeholder="Contoh: Keyboard Mechanical RGB" 
@@ -57,13 +58,14 @@ const handleSubmit = async () => {
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Deskripsi Barang (Markdown)</label>
+          <span class="block text-xs font-semibold text-slate-600 uppercase mb-1">Deskripsi Barang (Markdown)</span>
           <MarkdownEditor v-model="description" height="200px" />
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Harga Awal (Start Bid)</label>
+          <label for="add-start-bid" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Harga Awal (Start Bid)</label>
           <input 
+            id="add-start-bid"
             v-model.number="startBid" 
             type="number" 
             placeholder="Contoh: 100000" 
@@ -73,8 +75,9 @@ const handleSubmit = async () => {
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Batas Waktu Penutupan</label>
+          <label for="add-closed-at" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Batas Waktu Penutupan</label>
           <input 
+            id="add-closed-at"
             v-model="closedAt" 
             type="text" 
             placeholder="YYYY-MM-DD HH:MM:SS" 
